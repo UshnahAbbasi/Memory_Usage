@@ -1,6 +1,6 @@
 # Memory_Usage
 
-There is a postgresql server running on my personal computer. The txt file contains the commands used to create the table. 
+There is a postgresql server running on my personal computer. 
 - database: db_ushnah
 - user: ushnah
 - password: abbasi
@@ -10,7 +10,7 @@ There is a postgresql server running on my personal computer. The txt file conta
 
 The API (GET method) is running on 127.0.0.1:2910 
 
-tested via Talend API tester. The timestamp is addedin the parameters in GET request and the id, timestamp, memory footprint and cpu usage at that timestamp is the response of this request.
+tested via Talend API tester. The timestamp is added in the parameters in GET request and the id, timestamp, memory footprint and cpu usage at that timestamp is the response of this request.
 Sample request:
 http://127.0.0.1:2910/usage?timestamp='2023-06-12 17:43:26'. The response of API is:
 
