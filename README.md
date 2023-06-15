@@ -1,5 +1,6 @@
 # Memory_Usage
 
+## The database
 There is a postgresql server running on my personal computer. 
 - database: db_ushnah
 - user: ushnah
@@ -8,6 +9,11 @@ There is a postgresql server running on my personal computer.
 - columns: id, timestamp, memory_footprint, cpu_usage
 - entries: 150
 
+In the database, the timestamps are total 150, each with 15 second gap. 
+- Start timestamp: 2023-06-12 17:06:11
+- end timestamp : 2023-06-12 17:43:26
+
+## The API
 The API (GET method) is running on 127.0.0.1:2910 
 
 tested via Talend API tester. The timestamp is added in the parameters in GET request and the id, timestamp, memory footprint and cpu usage at that timestamp is the response of this request.
