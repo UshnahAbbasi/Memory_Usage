@@ -3,8 +3,6 @@
 ## The database
 There is a postgresql server running on my personal computer. 
 - database: db_ushnah
-- user: ushnah
-- password: abbasi
 - table: memory_usage
 - columns: id, timestamp, memory_footprint, cpu_usage
 - entries: 150
