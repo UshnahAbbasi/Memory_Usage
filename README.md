@@ -38,6 +38,8 @@ If the request has hour or minute or second, the number of rows(single or multip
 
 Sample request:
 http://127.0.0.1:2910/usage?hour=17&minute=43. The response of API is:
+
+
 [
     [
         149,
