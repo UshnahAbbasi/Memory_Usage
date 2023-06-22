@@ -1,5 +1,5 @@
 from flask import Flask, jsonify,request
-from db_connect import db_connect
+from db_connect import get_data, get_query
 
 app = Flask(__name__)
 
@@ -7,19 +7,28 @@ app = Flask(__name__)
 @app.route('/usage', methods=['GET'])
 def get_usage():
     timestamp = request.args.get('timestamp')
-    #idd=request.args.get('idd')
+
     print(timestamp)
-   
-    query = f"SELECT * FROM memory_usage WHERE timestamp = {timestamp}"
-    #query = f"SELECT * FROM dummy_data WHERE id = '{idd}'"
+    
+    hour = request.args.get('hour')
+    print(hour)
+
+    minute = request.args.get('minute')
+    print(minute)
+
+    second = request.args.get('second')
+    print(second)
+
+    
+    query=get_query(timestamp, hour, minute, second)
+        
+
     print(query)
-    conn=db_connect()
-    cursor = conn.cursor()
-    cursor.execute(query)
-    data = cursor.fetchall()
-    print(data)
-    cursor.close()
-    return jsonify(data)
+    data= get_data(query)
+    if data == []:
+        return "no data available at this time"
+    else:
+        return jsonify(data)
 
 
 if __name__ == '__main__':
