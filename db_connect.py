@@ -35,7 +35,7 @@ def get_data(query):
 
 def get_query(timestamp, hour, minute, second):
     if timestamp != None:
-        query = f"SELECT * FROM memory_usage WHERE timestamp = {timestamp}"
+        query = f"SELECT * FROM memory_usage WHERE timestamp = '{timestamp}'"
     else:
         if hour != None:
             query = f"SELECT * FROM memory_usage WHERE hour = {hour}"
