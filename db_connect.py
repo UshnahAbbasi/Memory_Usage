@@ -34,14 +34,24 @@ def get_data(query):
     return data
 
 def get_query(timestamp, hour, minute, second):
-    if timestamp != None:
+    if timestamp is not None:
         query = f"SELECT * FROM memory_usage WHERE timestamp = '{timestamp}'"
     else:
-        if hour != None:
-            query = f"SELECT * FROM memory_usage WHERE hour = {hour}"
-        if minute != None:
-            query = f"SELECT * FROM memory_usage WHERE hour = {hour} and minute ={minute}"
-        if second != None:
-            query = f"SELECT * FROM memory_usage WHERE hour = {hour} and minute ={minute} and second={second} "
-    
+        query = "SELECT * FROM memory_usage WHERE"
+        conditions = []
+
+        if hour is not None:
+            conditions.append(f"hour = {hour}")
+        if minute is not None and hour is None and second is None:
+            conditions.append(f"minute = {minute}")
+        if minute is not None and hour is None and second is not None:
+            conditions.append(f"minute = {minute} and second = {second}")
+        if minute is not None and hour is not None and second is None:
+            conditions.append(f"hour = {hour} and minute = {minute}")
+        if second is not None and hour is None and minute is None:
+            conditions.append(f"second = {second}")
+
+        query += " and ".join(conditions)
+
     return query
+
